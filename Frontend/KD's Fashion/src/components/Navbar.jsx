@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import logo from '../img/Logo.png';
@@ -7,7 +7,20 @@ import profileIcon from '../img/profile.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { user } = useAuth(); // Correct usage of context
+  const { user } = useAuth(); 
+  
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsOpen(false); 
+      }
+    }
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+  
 
   return (
     <nav className="navbar">
