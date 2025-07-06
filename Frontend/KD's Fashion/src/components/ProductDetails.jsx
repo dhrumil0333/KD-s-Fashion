@@ -48,10 +48,10 @@ export default function ProductDetails() {
         size: product.selectedSize || 'M',
         quantity: product.quantity || 1,
         snapshots: {
-          front: `http://localhost:5000/${product.image}` // just the 2D front image
+          front: `http://localhost:5000/${product.image}` 
         },
         totalPrice: product.price * (product.quantity || 1),
-        color: '#ffffff', // Optional static/default
+        color: '#ffffff', 
         createdAt: new Date()
       };
 
